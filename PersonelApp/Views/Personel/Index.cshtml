@@ -1,0 +1,67 @@
+﻿
+@model IEnumerable<PersonelApp.Models.Personel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<br/>
+@using (Html.BeginForm())
+{
+    <label>Firma Adı Ara : </label>
+    @Html.Editor("ara")
+    <input type="submit" value="Ara"/>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yetkili)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soyadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yetkili)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soyadi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tarih)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Detayları İncele", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h6>
+    @Html.ActionLink("Yeni Müşteri Görüşmesi Ekle", "Create")
+</h6>
